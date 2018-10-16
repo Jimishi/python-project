@@ -3,6 +3,8 @@ import sys
 import pickle
 import os
 
+
+
 #####   Help Menu   #####
 def helpMenu():
     print("This is a QUIZ about Jimmy Ho \n")
@@ -241,26 +243,40 @@ def beginQuiz(name):
         print('Good, you know enough about me')
     elif(score < 7):
         print('Not sure if I can even call you my friend')
-        
+    elif(score == 10):
+        print('You really know me very well!')
+    
+    text = 'The previous player, ' + name + 'got' + str(score) + 'in this QUIZ'
+
+    saveFile = open('exampleFile.txt','w')
+    saveFile.write(text)
+    saveFile.close()
 
 #Title Screen
-print('####################')
-print('##     Welcome    ##')
-print('##Do You Know Me? ##')
-print('####################\n')
+def startGame():
+    print('####################')
+    print('##     Welcome    ##')
+    print('##Do You Know Me? ##')
+    print('####################\n')
 
-print('Please type in an available command, PLAY or HELP')
+    print('Please type in an available command, PLAY or HELP')
 
-menu = input("> ")
-if menu.lower() == ("play"):
-    createProfile()
-elif menu.lower() == ("help"):
-    helpMenu()
-while menu.lower() not in ["play", "help"]:
-    print("Please enter PLAY or HELP")
-    menu = input("> ")
+    menu = input(" ")
     if menu.lower() == ("play"):
         createProfile()
     elif menu.lower() == ("help"):
         helpMenu()
-        
+    while menu.lower() not in ["play", "help"]:
+        print("Please enter PLAY or HELP")
+        menu = input("> ")
+        if menu.lower() == ("play"):
+            createProfile()
+        elif menu.lower() == ("help"):
+            helpMenu()
+
+def saveScores(score):
+    pickle_out = open("scores.pickle", "w")
+    pickle.dump(score, pickle_out)
+    pickle_out.close()
+
+startGame()
