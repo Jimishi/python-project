@@ -242,3 +242,4 @@ while menu.lower() not in ["play", "help"]:
         createProfile()
     elif menu.lower() == ("help"):
         helpMenu()
+        
