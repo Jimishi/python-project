@@ -1,5 +1,7 @@
 import time
 import sys
+import pickle
+import os
 
 #####   Help Menu   #####
 def helpMenu():
@@ -18,6 +20,24 @@ def createProfile():
         print('You could not even type your name in twice, CYA')
         sys.exit()
 
+#####   Shortening Questions in Quiz #####
+def correct(score):
+    print('............')
+    score = score + 0
+    print('You have ' +str(score) + ' points')
+
+def incorrect(score):
+    print('Correct!')
+    score = score + 1 
+    print('You have ' + str(score) + " point")
+
+def askQuestion(questiontitle,question,one,two,three,four):
+    print('### ' + questiontitle + ' ###')
+    print(question)
+    print('A. ' + one)
+    print('B. ' + two)
+    print('C. ' + three)
+    print('D. ' + four)
 
 #####   Quiz    #####
 def beginQuiz(name):
@@ -29,15 +49,13 @@ def beginQuiz(name):
     score = int(score)  #turn score into and integer
 
     #####   Question 1  #####
-    print('### Question 1 ###')
-    print('When was my Birthday?')
-    print('A. October 10th 1995')
-    print('B. October 16th 1994')
-    print('C. October 18th 1995')
-    print('D. October 19th 1996')
-
+    askQuestion("Question 1",
+                "When was my Birthday?",
+                "October 10th 1995",
+                "October 16th 1994",
+                "October 18th 1995" , 
+                "October 19th 1996")
     quest1answer = "C"
-
     print('Your answer is...\n')
     quest1choice = input("> ")
 
@@ -50,88 +68,68 @@ def beginQuiz(name):
         print('You have ' + str(score) + ' point')
 
     #####   Question 2  #####
-    print('### Question 2 ###')
-    print('What is my Chinese name is English spelling?')
-    print('A. He Hong Yu')
-    print('B. Ho Hong Yu')
-    print('C. He Wang Yu')
-    print('D. Ho Wang Yu')
-
+    askQuestion("Question 2",
+                "What is my Chinese name is English spelling?",
+                "He Hong Yu",
+                "Ho Hong Yu",
+                "He Wang Yu" , 
+                "Ho Wang Yu")
     quest2answer = "D"
     print('Your answer is...\n')
     quest2choice = input("> ")
 
     if(quest2choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
     
     #####   Question 3  #####
-    print('### Question 3 ###')
-    print('What is the name of my High School?')
-    print('A. Scotch College')
-    print('B. Scotch High')
-    print('C. Wesley College')
-    print('D. Melbourne High')
-
+    askQuestion("Question 3",
+                "What is the name of my High School?",
+                "Scotch College",
+                "Scotch High",
+                "Wesley College" , 
+                "Melbourne High")
     quest3answer = "A"
     print('Your answer is...\n')
     quest3choice = input("> ")
 
     if(quest3choice != quest3answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 4  #####
-    print('### Question 4 ###')
-    print('What is my favorite type of computer game?')
-    print('A. FPS (First Person Shooters)')
-    print('B. RTS (Real Time Strategy)')
-    print('C. RPG (Role Playing Game')
-    print('D. Sports and Racing')
-
+    askQuestion("Question 4",
+                "What is my favorite type of computer game?",
+                "FPS (First Person Shooters)",
+                "RTS (Real Time Strategy)",
+                "RPG (Role Playing Game" , 
+                "Sports and Racing")
     quest4answer = "B"
     print('Your answer is...\n')
     quest4choice = input("> ")
 
     if(quest4choice != quest4answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 5  #####
-    print('### Question 5 ###')
-    print('What is my favorite type of meat to eat?')
-    print('A. Beef')
-    print('B. Chicken')
-    print('C. Lamb')
-    print('D. Pork')
-
+    askQuestion("Question 5",
+                "What is my favorite type of meat to eat?",
+                "Beef",
+                "Chicken",
+                "Lamb" , 
+                "Pork")
     quest5answer = "B"
     print('Your answer is...\n')
     quest5choice = input("> ")
 
     if(quest5choice != quest5answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 6  #####
     print('### Question 6 ###')
@@ -145,14 +143,10 @@ def beginQuiz(name):
     print('Your answer is...\n')
     quest6choice = input("> ")
 
-    if(quest6choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+    if(quest6choice != quest6answer):
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 7  #####
     print('### Question 7 ###')
@@ -166,14 +160,10 @@ def beginQuiz(name):
     print('Your answer is...\n')
     quest7choice = input("> ")
 
-    if(quest7choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+    if(quest7choice != quest7answer):
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 8  #####
     print('### Question 8 ###')
@@ -187,14 +177,10 @@ def beginQuiz(name):
     print('Your answer is...\n')
     quest8choice = input("> ")
 
-    if(quest8choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+    if(quest8choice != quest8answer):
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 9  #####
     print('### Question 9 ###')
@@ -208,14 +194,10 @@ def beginQuiz(name):
     print('Your answer is...\n')
     quest9choice = input("> ")
 
-    if(quest9choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+    if(quest9choice != quest9answer):
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
     #####   Question 10 #####
     print('### Question 20 ###')
@@ -229,17 +211,16 @@ def beginQuiz(name):
     print('Your answer is...\n')
     quest10choice = input("> ")
 
-    if(quest10choice != quest2answer):
-        print('............')
-        score = score + 0
-        print('You have ' +str(score) + ' points')
+    if(quest10choice != quest10answer):
+        correct(score)
     else:
-        print('Correct!')
-        score = score + 1 
-        print('You have ' + str(score) + " point")
+        incorrect(score)
 
-    #results()
-
+    if (score >= 7):
+        print('Good, you know enough about me')
+    elif(score < 7):
+        print('Not sure if I can even call you my friend')
+        
 
 #Title Screen
 print('####################')
