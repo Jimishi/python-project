@@ -246,9 +246,9 @@ def beginQuiz(name):
     elif(score == 10):
         print('You really know me very well!')
     
-    text = 'The previous player, ' + name + 'got' + str(score) + 'in this QUIZ'
+    text = 'The previous player , ' + name + ' got ' + str(score) + 'in this QUIZ'
 
-    saveFile = open('exampleFile.txt','w')
+    saveFile = open('quiz_game.txt','w')
     saveFile.write(text)
     saveFile.close()
 
