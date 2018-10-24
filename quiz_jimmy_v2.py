@@ -24,7 +24,6 @@ def runQuiz(questions):
             score += 1
     print(" You have scored " + str(score) + "/" + str(len(questions)))
 
-name = Name(None)
 runQuiz(questions)
 
 

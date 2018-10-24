@@ -4,15 +4,17 @@ class Question:
         self.answer = answer
 
 class Name:
-    def __init__(self, name):
+    def __init__(self):
+        self.name = "Enter your name: " 
+
+    def ask(self):
+        while 1:
+            name = input("Name: ")
+            if name == "":
+                print("Retry")
+            else:
+                print("Hello ", name)
+                break
+        
         self.name = name
-
-    @classmethod
-    def from_input(cls):
-        return cls(
-            input('Name: ')
-        )
-
-player = Name.from_input()
-print(player.name)
 
