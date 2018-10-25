@@ -1,33 +1,43 @@
 import random
 import getpass
 import sys
+import time
 
 def rollDice():
     diceface = [1, 2, 3, 4, 5, 6]
-    print(random.choice(diceface))
-
+    roll = True
+    while roll:
+        userinput = getpass.getpass("Enter 1 to roll dice")
+        if userinput == "1":
+            print("Initializing ROLL DICE sequence")
+            print("..."),
+            time.sleep(1)
+            print(random.choice(diceface))
+        else:
+            roll = False
+            break
+    
 def flipCoin():
+    flip = True
     coinface = ["Heads", "Tail"]
-    print(random.choice(coinface))
+    while flip:
+        userinput = getpass.getpass("Enter 2 to flip coin")
+        if userinput == "2":
+            print("Initializing FLIP COIN sequence")
+            print(random.choice(coinface))
+        else:
+            flip = False
+            break
+    
+    
 
 print("###  WELCOME TO GAMBLING TOOLS   ###")
-print("###  Enter '1' to roll a rice    ###")
-print("###  Enter '2' to flip a coin    ###")
+print("###  Enter 'roll' to roll a dice    ###")
+print("###  Enter 'coin' to flip a coin    ###")
 
-
-roll = True
-while roll:
-    userinput = getpass.getpass("Roll again by pressing 1")
-    if userinput == "1":
-        print("Initializing ROLL DICE sequence")
-        rollDice()
-    else:
-        roll = False
-        break
-while True:
-    if userinput == "2":
-        print("Initializing FLIP COIN sequence")
-        flipCoin()
-
-
+decision = input("")
+if decision == "roll":
+    rollDice()
+if decision == "flip":
+    flipCoin()
 
